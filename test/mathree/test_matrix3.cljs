@@ -23,7 +23,7 @@
   (let [omat3-1 (mat3/clone' mat3-1)
         om3a (mat3/clone' m3a)]
 
-    (is (mat3/almost-equal?
+    (is (mat3/almost-equals
          (mat3/from-matrix4 mat4-1)
          (mat3/matrix3 [0 1 2 4 5 6 8 9 10])))
 

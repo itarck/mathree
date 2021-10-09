@@ -7,7 +7,7 @@
 
 
 (defprotocol ISpherical
-  (almost-equal? [s1 s2])
+  (almost-equals [s1 s2])
   (clone' [s]))
 
 
@@ -36,11 +36,11 @@
        not-found)))
 
   ISpherical
-  (almost-equal? [s1 s2]
+  (almost-equals [s1 s2]
     (and
-     (arith/almost-equal? (:radius s1) (:radius s2))
-     (arith/almost-equal? (angle/standard-angle-in-radians (:phi s1)) (angle/standard-angle-in-radians (:phi s2)))
-     (arith/almost-equal? (angle/standard-angle-in-radians (:theta s1)) (angle/standard-angle-in-radians (:theta s2)))))
+     (arith/almost-equals (:radius s1) (:radius s2))
+     (arith/almost-equals (angle/standard-angle-in-radians (:phi s1)) (angle/standard-angle-in-radians (:phi s2)))
+     (arith/almost-equals (angle/standard-angle-in-radians (:theta s1)) (angle/standard-angle-in-radians (:theta s2)))))
 
   (clone' [s1]
     (j/call s1 :clone')))
@@ -66,7 +66,7 @@
 
   (from-cartesian-coords 0 1 0)
 
-  (almost-equal? (spherical 1 1 0) (spherical 1 (+ 1 (* Math/PI 2)) 0))
+  (almost-equals (spherical 1 1 0) (spherical 1 (+ 1 (* Math/PI 2)) 0))
   
   )
 

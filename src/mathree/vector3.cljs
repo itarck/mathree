@@ -6,7 +6,7 @@
 
 
 (defprotocol IVector3
-  (almost-equal? [v1 v2])
+  (almost-equals [v1 v2])
   (add-scalar [v1 s] "Adds the scalar value s to this vector's x, y and z values.")
   (add [v1 v2] "Adds v to this vector.")
   (apply-quaternion [v q] "Applies a Quaternion transform to this vecto")
@@ -54,8 +54,8 @@
 
   IVector3
 
-  (almost-equal? [v1 v2]
-    (arith/almost-equal-seq? (seq v1) (seq v2)))
+  (almost-equals [v1 v2]
+    (arith/almost-equals-seq (seq v1) (seq v2)))
 
   (add [v1 v2]
     (let [vc (clone' v1)]

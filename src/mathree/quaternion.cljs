@@ -6,7 +6,7 @@
 
 
 (defprotocol IQuanternion
-  (almost-equal? [q1 q2])
+  (almost-equals [q1 q2])
   (angle-to [q1 q2] "Returns the angle between this quaternion and quaternion q in radians.")
   (clone' [q] "Creates a new Quaternion with identical x, y, z and w properties to this one.")
   (conjugate [q] "Returns the rotational conjugate of this quaternion. The conjugate of a quaternion represents the same rotation in the opposite direction about the rotational axis.")
@@ -53,8 +53,8 @@
 
   IQuanternion
 
-  (almost-equal? [q1 q2]
-    (every? (fn [n] (arith/almost-equal? n 0.0)) (map - (seq q1) (seq q2))))
+  (almost-equals [q1 q2]
+    (every? (fn [n] (arith/almost-equals n 0.0)) (map - (seq q1) (seq q2))))
 
   (angle-to
     [q1 q2]

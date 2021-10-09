@@ -6,7 +6,7 @@
 
 
 (defprotocol IMatrix3
-  (almost-equal? [m1 m2])
+  (almost-equals [m1 m2])
   (clone' [m])
   (determinant [m])
   (equals [m1 m2])
@@ -37,8 +37,8 @@
 
   IMatrix3
 
-  (almost-equal? [m1 m2]
-    (every? (fn [n] (arith/almost-equal? n 0.0)) (map - (seq m1) (seq m2))))
+  (almost-equals [m1 m2]
+    (every? (fn [n] (arith/almost-equals n 0.0)) (map - (seq m1) (seq m2))))
 
   (clone' [m]
     (j/call m :clone))
@@ -96,7 +96,7 @@
 
   (seq (matrix3 (range 10)))
 
-  (almost-equal? (matrix3 (range 10)) (matrix3 (range 10)))
+  (almost-equals (matrix3 (range 10)) (matrix3 (range 10)))
 
   (matrix3 (reverse (range 10)))
 

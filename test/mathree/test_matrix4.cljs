@@ -39,14 +39,14 @@
   (let [om1 (mat4/clone' m1)
         m (mat4/compose p1 q1 s1)
         [p2 q2 s2] (mat4/decompose m)]
-    (is (arith/almost-equal-seq? (seq p1) (seq p2)))
-    (is (arith/almost-equal-seq? (seq s1) (seq s2)))
-    (is (arith/almost-equal-seq? (seq q1) (seq q2)))
+    (is (arith/almost-equals-seq (seq p1) (seq p2)))
+    (is (arith/almost-equals-seq (seq s1) (seq s2)))
+    (is (arith/almost-equals-seq (seq q1) (seq q2)))
 
     (is (= 1 (mat4/determinant (mat4/extract-rotation m1))))
 
-    (is (arith/almost-equal? (apply * s1) (mat4/determinant m1)))
-    (is (mat4/almost-equal? (mat4/multiply (mat4/invert m1) m1) (mat4/identity-matrix4)))
+    (is (arith/almost-equals (apply * s1) (mat4/determinant m1)))
+    (is (mat4/almost-equals (mat4/multiply (mat4/invert m1) m1) (mat4/identity-matrix4)))
     (is (= (apply * s1) (mat4/determinant (mat4/scale (mat4/identity-matrix4) s1))))
 
     (is (mat4/equals

@@ -40,11 +40,11 @@
     (is (q/equals (q/slerp nq1 nq4 0) nq1))
     (is (q/equals (q/slerp nq1 nq4 1) nq4))
 
-    (is (q/almost-equal?
+    (is (q/almost-equals
          (q/from-unit-vectors (v3/vector3 1 0 0) (v3/vector3 0 1 0))
          (q/from-axis-angle (v3/vector3 0 0 1) (/ Math/PI 2))))
 
-    (is (q/almost-equal? q6
+    (is (q/almost-equals q6
                           (q/from-rotation-matrix
                            (m4/make-rotation-from-quaternion q6))))
     ;; 

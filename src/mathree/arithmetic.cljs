@@ -3,7 +3,7 @@
    [goog.math :as gmath]))
 
 
-(defn almost-equal?
+(defn almost-equals
   " nearlyEquals (a, b, opt_tolerance) → boolean
     opt_tolerance	number=
     Optional tolerance range. Defaults to 0.000001. If specified, should be greater than 0."
@@ -13,12 +13,12 @@
    (gmath/nearlyEquals a b opt_tolerance)))
 
 
-(defn almost-equal-seq?
-  "almost-equal? for every items"
+(defn almost-equals-seq
+  "almost-equals for every items"
   ([seqa seqb]
-   (every? (fn [n] (almost-equal? n 0.0)) (map - seqa seqb)))
+   (every? (fn [n] (almost-equals n 0.0)) (map - seqa seqb)))
   ([seqa seqb opt_tolerance]
-   (every? (fn [n] (almost-equal? n 0.0 opt_tolerance)) (map - seqa seqb))))
+   (every? (fn [n] (almost-equals n 0.0 opt_tolerance)) (map - seqa seqb))))
 
 
 (defn rand-sign []

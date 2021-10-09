@@ -21,26 +21,26 @@
         oq1 q1]
 
     (is (=  1 (v3/length (v3/normalize v1))))
-    (is (v3/almost-equal? (v3/apply-quaternion v1 q1) (v3/vector3 0 0 2)))
+    (is (v3/almost-equals (v3/apply-quaternion v1 q1) (v3/vector3 0 0 2)))
 
-    (is (v3/almost-equal?
+    (is (v3/almost-equals
          (v3/apply-axis-angle v1 (v3/vector3 1 0 0) (/ Math/PI 2))
          (v3/vector3 0 0 2)))
 
-    (is (v3/almost-equal?
+    (is (v3/almost-equals
          (v3/apply-euler v1 e1)
          (v3/vector3 0 0 2)))
 
-    (is (v3/almost-equal? (v3/project-on-plane va (vector3 0 1 0)) (vector3 0.5773502691896258 0 0.5773502691896258)))
+    (is (v3/almost-equals (v3/project-on-plane va (vector3 0 1 0)) (vector3 0.5773502691896258 0 0.5773502691896258)))
 
 
-    (is (v3/almost-equal? (v3/normalize (v3/cross (vector3 1 1 0) v1))
+    (is (v3/almost-equals (v3/normalize (v3/cross (vector3 1 1 0) v1))
                           (v3/vector3 0 0 1)))
 
     ;; 
     (is (v3/equals ov1 v1))
     (is (q/equals oq1 q1))
-    (is (v3/almost-equal? va ova))))
+    (is (v3/almost-equals va ova))))
 
 
 (run-tests)
