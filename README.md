@@ -1,2 +1,2 @@
 # mathree
-cljs wrapper for threejs math library
+ClojureScript wrapper for Threejs math library
