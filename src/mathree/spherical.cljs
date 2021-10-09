@@ -7,8 +7,8 @@
 
 
 (defprotocol ISpherical
-  (almost-equals [s1 s2])
-  (clone' [s]))
+  (almost-equals [s1 s2] "Return true if s1 and s2 are almost equal. every element is less than 0.000001.")
+  (clone' [s] "Returns a new spherical with the same radius, phi and theta properties as this one."))
 
 
 (extend-type three/Spherical
@@ -47,19 +47,38 @@
 
 
 (defn spherical
+  "Constructor
+Spherical( radius : Float, phi : Float, theta : Float )
+radius - the radius, or the Euclidean distance (straight-line distance) from the point to the origin. Default is 1.0.
+phi - polar angle in radians from the y (up) axis. Default is 0.
+theta - equator angle in radians around the y (up) axis. Default is 0.
+
+The poles (phi) are at the positive and negative y axis. The equator (theta) starts at positive z."
   ([]
    (spherical 1 0 0))
   ([radius phi theta]
    (new three/Spherical radius phi theta)))
 
-(defn from-seq [s]
+(defn from-seq 
+  "Convert seq of 3 elements to spherical point"
+  [s]
   (let [[r p t] s]
     (spherical r p t)))
 
-(defn from-cartesian-coords [x y z]
+(defn from-cartesian-coords 
+  "Sets values of this spherical's radius, phi and theta properties from Cartesian coordinates."
+  [x y z]
   (let [sp (spherical)]
     (j/call sp :setFromCartesianCoords x y z)
     sp))
+
+(defn from-vector3
+  "Sets values of this spherical's radius, phi and theta properties from the Vector3. "
+  [vector3]
+  (let [sp (spherical)]
+    (j/call sp :setFromVector3 vector3)
+    sp))
+
 
 
 (comment

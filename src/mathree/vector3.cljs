@@ -6,7 +6,7 @@
 
 
 (defprotocol IVector3
-  (almost-equals [v1 v2])
+  (almost-equals [v1 v2] "Return true if v1 and v2 are almost equal. every element is less than 0.000001.")
   (add-scalar [v1 s] "Adds the scalar value s to this vector's x, y and z values.")
   (add [v1 v2] "Adds v to this vector.")
   (apply-quaternion [v q] "Applies a Quaternion transform to this vecto")
@@ -16,10 +16,10 @@
   (apply-axis-angle [v axis angle] ".applyAxisAngle ( axis : Vector3, angle : Float ) : this. axis - A normalized Vector3. angle - An angle in radians.")
   (apply-euler [v e] "Applies euler transform to this vector by converting the Euler object to a Quaternion and applying.")
   (angle-to [v1 v2] "Returns the angle between this vector and vector v in radians.")
-  (clone' [v])
+  (clone' [v] "Returns a new vector3 with the same x, y and z values as this one.")
   (cross [v1 v2] "Sets this vector to cross product of a and b.")
   (dot [v1 v2] "Calculate the dot product of this vector and v.")
-  (equals [v1 v2])
+  (equals [v1 v2] "Returns true if the components of this vector and v are strictly equal; false otherwise.")
   (length [v] "Computes the Euclidean length (straight-line length) from (0, 0, 0) to (x, y, z).")
   (normalize [v] "Convert this vector to a unit vector - that is, sets it equal to a vector with the same direction as this one, but length 1.")
   (multiply-scalar [v s] "Multiplies this vector by scalar s.")
@@ -132,24 +132,38 @@
 
 
 (defn vector3
+  "Constructor function
+   vector3( x : Float, y : Float, z : Float )
+   x - the x value of this vector. Default is 0.
+   y - the y value of this vector. Default is 0.
+   z - the z value of this vector. Default is 0.
+   "
   ([] (three/Vector3.))
   ([x y z] (three/Vector3. x y z)))
 
-(defn from-seq [v1]
+(defn from-seq
+  "convert a seq of 3 elements to vector3"
+  [v1]
   (let [[x y z] (seq v1)]
     (vector3 x y z)))
 
-(defn from-spherical [s1]
+(defn from-spherical 
+  "convert spherical point to vector3 point"
+  [s1]
   (let [v (vector3)]
     (j/call v :setFromSpherical s1)
     v))
 
-(defn from-spherical-coords [radius phi theta]
+(defn from-spherical-coords 
+  "convert spherical point, radius phi theta as input,  to vector3 point"
+  [radius phi theta]
   (let [v (vector3)]
     (j/call v :setFromSphericalCoords radius phi theta)
     v))
 
-(defn random []
+(defn random 
+  "Sets each component of this vector to a pseudo-random value between 0 and 1, excluding 1."
+  []
   (let [v (vector3)]
     (j/call v :random)))
 

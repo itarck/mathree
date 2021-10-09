@@ -6,7 +6,7 @@
 
 
 (defprotocol IQuanternion
-  (almost-equals [q1 q2])
+  (almost-equals [q1 q2] "Return true if q1 and q2 are almost equal. every element is less than 0.000001.")
   (angle-to [q1 q2] "Returns the angle between this quaternion and quaternion q in radians.")
   (clone' [q] "Creates a new Quaternion with identical x, y, z and w properties to this one.")
   (conjugate [q] "Returns the rotational conjugate of this quaternion. The conjugate of a quaternion represents the same rotation in the opposite direction about the rotational axis.")
@@ -106,27 +106,31 @@
 ;; functions
 
 (defn quaternion
+  "Quaternion( x : Float, y : Float, z : Float, w : Float )
+x - x coordinate
+y - y coordinate
+z - z coordinate
+w - w coordinate"
   ([]
    (new three/Quaternion))
   ([x y z w]
    (new three/Quaternion x y z w)))
 
-(defn quatn [v]
+(defn quatn 
+  " convert a vector of 4 elements to quanternion"
+  [v]
   (let [[x y z w] (seq v)]
     (quaternion x y z w)))
 
 (def from-seq quatn)
 
-(defn identity-quaternion []
+(defn identity-quaternion 
+  "Sets this quaternion to the identity quaternion; that is, to the quaternion that represents no rotation."
+  []
   (let [q (quaternion)]
     (j/call q :identity)
     q))
 
-(defn from-array
-  ([a] (let [qc (three/Quaternion)] 
-         (j/call qc  :fromArray a)))
-  ([a offset] (let [qc (three/Quaternion)]
-                (j/call qc  :fromArray a) offset)))
 
 (defn from-axis-angle
   "Sets this quaternion from rotation specified by axis and angle.
@@ -155,7 +159,7 @@
   (let [q (quaternion)]
     (j/call q :setFromRotationMatrix m4)))
 
-;; comments
+
 
 (comment
 
@@ -170,7 +174,6 @@
   (slerp q1 q2 0.5)
 
   q1
-
   ;; 
   )
   

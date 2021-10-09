@@ -4,10 +4,9 @@
    ["three" :as three]))
 
 (defprotocol IEuler
-  (clone' [r])
-  (equals [r1 r2])
-  (reorder [r order])
-  )
+  (clone' [r] "Returns a new Euler with the same parameters as this one.")
+  (equals [r1 r2] "Checks for strict equality of this euler and euler.")
+  (reorder [r order] "Resets the euler angle with a new order by creating a quaternion from this euler angle and then setting this euler angle with the quaternion and the new order."))
 
 
 (extend-type three/Euler
@@ -51,12 +50,23 @@
 
 
 (defn euler
+  "Constructor
+Euler( x : Float, y : Float, z : Float, order : String )
+x - (optional) the angle of the x axis in radians. Default is 0.
+y - (optional) the angle of the y axis in radians. Default is 0.
+z - (optional) the angle of the z axis in radians. Default is 0.
+order - (optional) a string representing the order that the rotations are applied, defaults to 'XYZ' (must be upper case).
+"
   ([] (three/Euler.))
   ([order] (three/Euler. 0 0 0 order))
   ([x y z] (three/Euler. x y z))
   ([x y z order] (three/Euler. x y z order)))
 
+
 (defn from-seq
+  "convert a seq of 3 elements to vector3, default order id XYZ.
+   or give order as second argument
+   "
   ([sq]
    (from-seq sq "XYZ"))
   ([sq order]
@@ -64,6 +74,9 @@
      (euler x y z order))))
 
 (defn from-quaternion
+  "q - a normalized quaternion.
+   order - (optional) a string representing the order that the rotations are applied.
+   Sets the angles of this euler transform from a normalized quaternion based on the orientation specified by order."
   ([q]
    (from-quaternion q "XYZ"))
   ([q order]

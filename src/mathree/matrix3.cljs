@@ -6,13 +6,13 @@
 
 
 (defprotocol IMatrix3
-  (almost-equals [m1 m2])
-  (clone' [m])
-  (determinant [m])
-  (equals [m1 m2])
+  (almost-equals [m1 m2] "Return true if this matrix and m are almost equal. every element is less than 0.000001.")
+  (clone' [m] "Creates a new Matrix3 and with identical elements to this one.")
+  (determinant [m] "Computes and returns the determinant of this matrix.")
+  (equals [m1 m2] "Return true if this matrix and m are equal.")
   (invert [m1] "Inverts this matrix, using the analytic method. You can not invert with a determinant of zero. If you attempt this, the method produces a zero matrix instead.")
   (multiply [m1 m2] "Sets this matrix to m1 * m2.")
-  (transpose [m1]))
+  (transpose [m1] "Transposes this matrix in place."))
 
 
 (extend-type three/Matrix3
@@ -65,6 +65,9 @@
 
 
 (defn matrix3
+  "Constructor
+Matrix3()
+Creates and initializes the Matrix3 to the 3x3 identity matrix."
   ([]
    (three/Matrix3.))
   ([sq]
@@ -73,16 +76,26 @@
      m)))
 
 
-(defn identity-matrix3 []
+(defn identity-matrix3 
+  "Resets this matrix to the 3x3 identity matrix:
+1, 0, 0
+0, 1, 0
+0, 0, 1"
+  []
   (let [m (matrix3)]
     (j/call m :identity)))
 
-(defn get-normal-matrix [m4]
+(defn get-normal-matrix 
+  "m - Matrix4
+   Sets this matrix as the upper left 3x3 of the normal matrix of the passed matrix4. The normal matrix is the inverse transpose of the matrix m."
+  [m4]
   (let [m3 (matrix3)]
     (j/call m3 :getNormalMatrix m4)
     m3))
 
-(defn from-matrix4 [m4]
+(defn from-matrix4 
+  "Set this matrix to the upper 3x3 matrix of the Matrix4 m."
+  [m4]
   (let [m3 (matrix3)]
     (j/call m3 :setFromMatrix4 m4)))
 

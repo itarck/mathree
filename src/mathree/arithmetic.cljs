@@ -21,7 +21,9 @@
    (every? (fn [n] (almost-equals n 0.0 opt_tolerance)) (map - seqa seqb))))
 
 
-(defn rand-sign []
+(defn rand-sign 
+  "rand of -1 or 1"
+  []
   (if (< (rand) 0.5) -1 1))
 
 (defn log

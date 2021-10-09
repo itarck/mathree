@@ -6,18 +6,18 @@
 ;; 1. degrees
 
 (defn standard-angle-in-degrees
-  ";; standardAngle (angle) → number
+  "standardAngle (angle) → number
    Normalizes an angle to be in range [0-360). Angles outside this range will be normalized to be the equivalent angle with that range."
   [angle]
   (gmath/standardAngle angle))
 
 (defn to-degrees
-  ";; toDegrees (angleRadians) → number"
+  "toDegrees (angleRadians) → number"
   [angle-in-radians]
   (gmath/toDegrees angle-in-radians))
 
 (defn parse-degrees 
-  " convert angle in degrees to parsed format of degrees, minutes and seconds"
+  "convert angle in degrees to parsed format of degrees, minutes and seconds"
   [angle-in-degrees]
   (let [degree (int angle-in-degrees)
         rem-degree (rem angle-in-degrees 1)
@@ -29,7 +29,7 @@
      :seconds second}))
 
 (defn calculate-degrees 
-  " convert parsed format to angle in degrees"
+  "convert parsed format to angle in degrees"
   [parsed-degrees]
   (let [{:keys [degrees minutes seconds]} parsed-degrees]
     (+ degrees
@@ -40,13 +40,13 @@
 ;; 2. radians
 
 (defn standard-angle-in-radians
-  ";; standardAngleInRadians (angle) → number
+  "standardAngleInRadians (angle) → number
    Normalizes an angle to be in range [0-2*PI). Angles outside this range will be normalized to be the equivalent angle with that range."
   [angle-in-radians]
   (gmath/standardAngleInRadians angle-in-radians))
 
 (defn to-radians
-  ";; toRadians (angleDegrees) → number"
+  "toRadians (angleDegrees) → number"
   [angle-in-degree]
   (gmath/toRadians angle-in-degree))
 
