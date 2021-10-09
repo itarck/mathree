@@ -15,11 +15,11 @@ Add the following to your project dependencies:
 
 Leiningen/Boot
 
-    [com.github.itarck/mathree "0.1.1-SNAPSHOT"]
+    [com.github.itarck/mathree "0.1.2-SNAPSHOT"]
 
 Clojure CLI/deps.edn
 
-    com.github.itarck/mathree {:mvn/version "0.1.1-SNAPSHOT"}
+    com.github.itarck/mathree {:mvn/version "0.1.2-SNAPSHOT"}
 
 ## Usage
 
@@ -65,7 +65,7 @@ Clojure CLI/deps.edn
 
 ## Documentation
 
-* [API Docs](https://cljdoc.org/d/com.github.itarck/mathree/0.1.1-SNAPSHOT/api/mathree)
+* [API Docs](https://cljdoc.org/d/com.github.itarck/mathree/0.1.2-SNAPSHOT/api/mathree)
 
 ## Work In Progress
 

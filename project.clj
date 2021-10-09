@@ -1,4 +1,4 @@
-(defproject com.github.itarck/mathree "0.1.1-SNAPSHOT"
+(defproject com.github.itarck/mathree "0.1.2-SNAPSHOT"
   :description "ClojureScript wrapper for Threejs math library"
   :url "https://github.com/itarck/mathree"
   :license {:name "MIT License"
