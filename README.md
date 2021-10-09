@@ -67,9 +67,9 @@ Clojure CLI/deps.edn
 
 * [API Docs](https://cljdoc.org/d/com.github.itarck/mathree/0.1.1-SNAPSHOT/api/mathree)
 
-## Project status
+## Work In Progress
 
-This repo contains only part of the data types of threejs Math library, not all of them, listed below
+Still a development version for my own use. This repo contains only part of the data types of threejs Math library, not all of them, listed below: 
 
 - [ ] Box2
 - [ ] Box3
