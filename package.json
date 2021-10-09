@@ -1,0 +1,9 @@
+{
+    "devDependencies": {
+      "shadow-cljs": "^2.12.22"
+    },
+    "dependencies": {
+      "three": "^0.133.0"
+    }
+  }
+  

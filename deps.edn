@@ -1,0 +1,25 @@
+{:paths ["src"]
+
+ :deps {thheller/shadow-cljs {:mvn/version "2.11.22"}
+        applied-science/js-interop {:mvn/version "0.2.7"}
+        binaryage/devtools {:mvn/version "1.0.0"}
+        nrepl/nrepl {:mvn/version "0.8.3"}}}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
