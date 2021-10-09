@@ -4,7 +4,6 @@
    [mathree.quaternion :as q :refer [quaternion quatn]]
    [mathree.vector3 :as v3]
    [mathree.euler :as e]
-   [mathree.arithmetic :as arith]
    [mathree.matrix4 :as m4]))
 
 
@@ -41,11 +40,11 @@
     (is (q/equals (q/slerp nq1 nq4 0) nq1))
     (is (q/equals (q/slerp nq1 nq4 1) nq4))
 
-    (is (arith/almost-all-equal?
-         (seq (q/from-unit-vectors (v3/vector3 1 0 0) (v3/vector3 0 1 0)))
-         (seq (q/from-axis-angle (v3/vector3 0 0 1) (/ Math/PI 2)))))
+    (is (q/almost-equal?
+         (q/from-unit-vectors (v3/vector3 1 0 0) (v3/vector3 0 1 0))
+         (q/from-axis-angle (v3/vector3 0 0 1) (/ Math/PI 2))))
 
-    (is (q/almost-equals q6
+    (is (q/almost-equal? q6
                           (q/from-rotation-matrix
                            (m4/make-rotation-from-quaternion q6))))
     ;; 

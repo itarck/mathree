@@ -55,7 +55,7 @@
   IVector3
 
   (almost-equal? [v1 v2]
-    (arith/almost-all-equal? (seq v1) (seq v2)))
+    (arith/almost-equal-seq? (seq v1) (seq v2)))
 
   (add [v1 v2]
     (let [vc (clone' v1)]

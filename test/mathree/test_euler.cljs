@@ -7,7 +7,3 @@
 
 
 (def e1 (e/euler 1 2 3))
-
-e1
-;; => #object[Euler [1 2 3 "XYZ"]]
-

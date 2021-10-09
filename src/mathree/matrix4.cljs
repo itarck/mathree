@@ -8,7 +8,7 @@
 
 
 (defprotocol IMatrix4
-  (almost-equals [m1 m2])
+  (almost-equal? [m1 m2])
   (clone' [m])
   (determinant [m])
   (decompose [m] "Decomposes this matrix into it's position, quaternion and scale components.")
@@ -75,7 +75,7 @@
 
   IMatrix4
   
-  (almost-equals [m1 m2]
+  (almost-equal? [m1 m2]
     (every? (fn [n] (arith/almost-equal? n 0.0)) (map - (seq m1) (seq m2))))
   
   (clone' [m]

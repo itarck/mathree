@@ -13,12 +13,12 @@
    (gmath/nearlyEquals a b opt_tolerance)))
 
 
-(defn almost-all-equal?
+(defn almost-equal-seq?
   "almost-equal? for every items"
-  ([a b]
-   (every? (fn [n] (almost-equal? n 0.0)) (map - a b)))
-  ([a b opt_tolerance]
-   (every? (fn [n] (almost-equal? n 0.0 opt_tolerance)) (map - a b))))
+  ([seqa seqb]
+   (every? (fn [n] (almost-equal? n 0.0)) (map - seqa seqb)))
+  ([seqa seqb opt_tolerance]
+   (every? (fn [n] (almost-equal? n 0.0 opt_tolerance)) (map - seqa seqb))))
 
 
 (defn rand-sign []
